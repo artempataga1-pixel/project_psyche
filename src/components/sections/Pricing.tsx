@@ -1,0 +1,271 @@
+'use client'
+
+import { motion, type Variants } from 'framer-motion'
+import { viewportOnce } from '@/lib/animations'
+import { HolographicButton } from '@/components/ui/holographic-button'
+
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -24,
+    filter: 'blur(10px)',
+  },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      delay: i * 0.18,
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+}
+import pricingData from '@/data/pricing.json'
+import type { PricingPlan } from '@/types'
+
+const plans = pricingData as PricingPlan[]
+
+const sectionText = {
+  title: 'Инвестиция в себя',
+  subtitle:
+    'Работа с глубинной психологией и творчеством — это наполнение внутреннего источника, из которого черпается энергия для всей жизни.',
+  includes:
+    'Моё 100% присутствие, безопасное конфиденциальное пространство, подбор техник, творческие материалы для сессии, поддержка в мессенджере между встречами.',
+  cta: 'Записаться',
+}
+
+export default function Pricing() {
+  return (
+    <section id="pricing" className="py-20 md:py-32" style={{ background: '#111D2A' }}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
+
+        {/* Заголовок */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.65 }}
+          className="mb-12 md:mb-20 text-center"
+        >
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <span style={{ display: 'block', width: '36px', height: '1px', background: 'rgba(216,180,160,0.5)' }} />
+            <span
+              className="text-xs font-semibold uppercase tracking-[0.15em]"
+              style={{ color: 'rgba(216,180,160,0.7)', fontFamily: 'var(--font-inter)' }}
+            >
+              стоимость
+            </span>
+            <span style={{ display: 'block', width: '36px', height: '1px', background: 'rgba(216,180,160,0.5)' }} />
+          </div>
+          <h2
+            className="font-bold mb-5"
+            style={{
+              fontFamily: 'var(--font-cormorant)',
+              fontSize: 'clamp(2.8rem, 5vw, 4rem)',
+              color: '#F8F9FA',
+              lineHeight: 1.1,
+            }}
+          >
+            {sectionText.title}
+          </h2>
+          <p
+            style={{
+              color: 'rgba(248,249,250,0.45)',
+              maxWidth: 480,
+              fontFamily: 'var(--font-open-sans)',
+              lineHeight: 1.75,
+              fontSize: '0.97rem',
+              margin: '0 auto',
+            }}
+          >
+            {sectionText.subtitle}
+          </p>
+        </motion.div>
+
+        {/* Тарифы: мобиле 1 кол, sm 2 кол (первые 2 и 1 ниже), md 3 кол */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6 md:mb-8">
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.id}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              className="rounded-3xl overflow-hidden flex flex-col relative"
+              style={{
+                background: plan.featured
+                  ? 'linear-gradient(160deg, rgba(74,111,165,0.22) 0%, rgba(58,90,138,0.15) 100%)'
+                  : 'rgba(255,255,255,0.03)',
+                border: plan.featured
+                  ? '1px solid rgba(74,111,165,0.4)'
+                  : '1px solid rgba(255,255,255,0.07)',
+                boxShadow: plan.featured
+                  ? '0 24px 60px rgba(74,111,165,0.2), inset 0 1px 0 rgba(255,255,255,0.07)'
+                  : 'none',
+              }}
+            >
+              {/* Верхняя светящаяся линия */}
+              <div
+                style={{
+                  height: '1px',
+                  background: plan.featured
+                    ? 'linear-gradient(90deg, transparent, rgba(107,142,199,0.8), transparent)'
+                    : 'linear-gradient(90deg, transparent, rgba(216,180,160,0.2), transparent)',
+                }}
+              />
+
+              {plan.featured && (
+                <div
+                  className="absolute top-5 right-5 text-xs font-semibold uppercase tracking-[0.12em] rounded-full px-3 py-1"
+                  style={{
+                    background: 'rgba(74,111,165,0.3)',
+                    color: 'rgba(168,200,238,0.9)',
+                    fontFamily: 'var(--font-inter)',
+                    border: '1px solid rgba(74,111,165,0.35)',
+                  }}
+                >
+                  {plan.badge}
+                </div>
+              )}
+
+              <div className="flex flex-col gap-5 md:gap-6 flex-1" style={{ padding: 'clamp(16px, 4vw, 32px)', paddingTop: plan.featured ? 'clamp(2.5rem, 5vw, 3.5rem)' : 'clamp(1.25rem, 3vw, 2rem)' }}>
+                {/* Название */}
+                <div>
+                  {!plan.featured && (
+                    <span
+                      className="block text-xs font-semibold uppercase tracking-[0.12em] mb-3"
+                      style={{
+                        color: 'rgba(216,180,160,0.5)',
+                        fontFamily: 'var(--font-inter)',
+                      }}
+                    >
+                      {plan.badge}
+                    </span>
+                  )}
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-cormorant)',
+                      fontSize: '1.65rem',
+                      fontWeight: 600,
+                      color: '#F8F9FA',
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {plan.title}
+                  </h3>
+                </div>
+
+                {/* Цена */}
+                <div
+                  className="flex items-end gap-1 pb-6"
+                  style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-cormorant)',
+                      fontSize: 'clamp(2.5rem, 7vw, 3.5rem)',
+                      fontWeight: 700,
+                      color: plan.featured ? '#A8C8EE' : '#F8F9FA',
+                      lineHeight: 0.95,
+                    }}
+                  >
+                    {plan.price.toLocaleString('ru-RU')}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-cormorant)',
+                      fontSize: '1.4rem',
+                      color: plan.featured ? 'rgba(168,200,238,0.5)' : 'rgba(248,249,250,0.3)',
+                      paddingBottom: '4px',
+                    }}
+                  >
+                    ₽
+                  </span>
+                </div>
+
+                {/* Длительность + описание */}
+                <div className="flex-1 flex flex-col gap-3">
+                  <span
+                    className="text-xs font-semibold uppercase tracking-[0.1em]"
+                    style={{
+                      color: plan.featured ? 'rgba(168,200,238,0.6)' : 'rgba(216,180,160,0.45)',
+                      fontFamily: 'var(--font-inter)',
+                    }}
+                  >
+                    {plan.duration}
+                  </span>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{
+                      color: 'rgba(248,249,250,0.45)',
+                      fontFamily: 'var(--font-open-sans)',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {plan.description}
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <HolographicButton
+                  href="#contact"
+                  className="inline-flex justify-center text-sm font-semibold rounded-full py-3.5"
+                  style={{
+                    background: plan.featured
+                      ? 'linear-gradient(135deg, #4A6FA5 0%, #3A5A8A 100%)'
+                      : 'transparent',
+                    color: plan.featured ? '#fff' : 'rgba(248,249,250,0.6)',
+                    fontFamily: 'var(--font-inter)',
+                    boxShadow: plan.featured ? '0 6px 20px rgba(74,111,165,0.35)' : 'none',
+                    border: plan.featured ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                    letterSpacing: '0.01em',
+                    borderRadius: '9999px',
+                  }}
+                >
+                  {sectionText.cta}
+                </HolographicButton>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Что входит */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="rounded-2xl flex items-start gap-4 md:gap-5"
+          style={{ padding: 'clamp(16px, 4vw, 24px) clamp(16px, 4vw, 32px)', background: 'rgba(216,180,160,0.05)', border: '1px solid rgba(216,180,160,0.12)' }}
+        >
+          <span
+            style={{
+              fontFamily: 'var(--font-cormorant)',
+              fontSize: '1.5rem',
+              color: 'rgba(216,180,160,0.4)',
+              flexShrink: 0,
+              lineHeight: 1,
+              marginTop: '2px',
+            }}
+          >
+            ✦
+          </span>
+          <p
+            style={{
+              color: 'rgba(248,249,250,0.45)',
+              fontFamily: 'var(--font-open-sans)',
+              lineHeight: 1.75,
+              fontSize: '0.93rem',
+            }}
+          >
+            <strong style={{ color: 'rgba(216,180,160,0.7)', fontWeight: 600 }}>Что входит в каждую сессию:&nbsp;</strong>
+            {sectionText.includes}
+          </p>
+        </motion.div>
+
+      </div>
+    </section>
+  )
+}
