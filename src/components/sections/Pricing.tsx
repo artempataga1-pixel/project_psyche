@@ -182,10 +182,10 @@ export default function Pricing({ variant }: PricingProps) {
                 <div
                   className="absolute top-5 right-5 text-xs font-semibold uppercase tracking-[0.12em] rounded-full px-3 py-1"
                   style={{
-                    background: 'rgba(74,111,165,0.3)',
-                    color: 'rgba(168,200,238,0.9)',
+                    background: isLight ? 'rgba(74,111,165,0.12)' : 'rgba(74,111,165,0.3)',
+                    color: isLight ? '#3A5A8A' : 'rgba(168,200,238,0.9)',
                     fontFamily: 'var(--font-inter)',
-                    border: '1px solid rgba(74,111,165,0.35)',
+                    border: isLight ? '1px solid rgba(74,111,165,0.25)' : '1px solid rgba(74,111,165,0.35)',
                   }}
                 >
                   {plan.badge}
@@ -199,7 +199,7 @@ export default function Pricing({ variant }: PricingProps) {
                     <span
                       className="block text-xs font-semibold uppercase tracking-[0.12em] mb-3"
                       style={{
-                        color: 'rgba(216,180,160,0.5)',
+                        color: isLight ? 'rgba(180,120,95,0.90)' : 'rgba(216,180,160,0.5)',
                         fontFamily: 'var(--font-inter)',
                       }}
                     >
@@ -258,11 +258,11 @@ export default function Pricing({ variant }: PricingProps) {
                           </span>
                           <span style={{
                             fontFamily: 'var(--font-inter)', fontSize: '0.72rem',
-                            color: isLight ? 'rgba(44,62,80,0.45)' : 'rgba(248,249,250,0.35)',
+                            color: isLight ? 'rgba(44,62,80,0.65)' : 'rgba(248,249,250,0.35)',
                             textTransform: 'uppercase', letterSpacing: '0.08em',
                           }}>
                             {row.label}
-                            {row.savings ? ` · −${row.savings.toLocaleString('ru-RU')} ₽` : ''}
+                            {row.savings ? ` · экономия ${row.savings.toLocaleString('ru-RU')} ₽` : ''}
                           </span>
                         </div>
                       ))}
@@ -275,7 +275,9 @@ export default function Pricing({ variant }: PricingProps) {
                   <span
                     className="text-xs font-semibold uppercase tracking-[0.1em]"
                     style={{
-                      color: plan.featured ? 'rgba(168,200,238,0.6)' : 'rgba(216,180,160,0.45)',
+                      color: plan.featured
+                        ? (isLight ? '#4A6FA5' : 'rgba(168,200,238,0.6)')
+                        : (isLight ? 'rgba(180,120,95,0.80)' : 'rgba(216,180,160,0.45)'),
                       fontFamily: 'var(--font-inter)',
                     }}
                   >
