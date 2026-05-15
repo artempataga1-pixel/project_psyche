@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 import { contact } from '@/content/contact'
 
@@ -180,7 +180,7 @@ function BookingCalendar({
       {/* Time slots */}
       <AnimatePresence>
         {selectedDate && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -218,7 +218,7 @@ function BookingCalendar({
                 )
               })}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
@@ -344,37 +344,37 @@ export default function Contact({ variant }: { variant?: Variant }) {
         <div className="flex flex-col lg:flex-row gap-10 md:gap-16 xl:gap-24 items-start">
 
           {/* Left column */}
-          <motion.div
+          <m.div
             className="flex-1"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={viewportOnce}
           >
-            <motion.div variants={staggerItem} className="flex items-center gap-4 mb-7">
+            <m.div variants={staggerItem} className="flex items-center gap-4 mb-7">
               <span style={{ display: 'block', width: '36px', height: '1px', background: labelLineColor }} />
               <span className="text-xs font-semibold uppercase tracking-[0.15em]"
                 style={{ color: labelColor, fontFamily: 'var(--font-inter)' }}>
                 начать работу
               </span>
-            </motion.div>
+            </m.div>
 
-            <motion.h2 variants={staggerItem} className="font-bold mb-6" style={{
+            <m.h2 variants={staggerItem} className="font-bold mb-6" style={{
               fontFamily: 'var(--font-cormorant)',
               fontSize: 'clamp(2.8rem, 5vw, 4rem)',
               color: titleColor, lineHeight: 1.08,
             }}>
               {contact.title}
-            </motion.h2>
+            </m.h2>
 
-            <motion.p variants={staggerItem} className="mb-8 md:mb-12" style={{
+            <m.p variants={staggerItem} className="mb-8 md:mb-12" style={{
               color: bodyColor, fontFamily: 'var(--font-open-sans)',
               lineHeight: 1.8, maxWidth: 400, fontSize: '1rem',
             }}>
               {contact.subtitle}
-            </motion.p>
+            </m.p>
 
-            <motion.div variants={staggerItem} className="flex flex-col gap-4 md:gap-5 mb-8 md:mb-12">
+            <m.div variants={staggerItem} className="flex flex-col gap-4 md:gap-5 mb-8 md:mb-12">
               {[
                 { text: contact.address, label: 'адрес' },
               ].map(item => (
@@ -394,9 +394,9 @@ export default function Contact({ variant }: { variant?: Variant }) {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </m.div>
 
-            <motion.div variants={staggerItem} className="flex flex-wrap gap-3 mb-8 md:mb-12">
+            <m.div variants={staggerItem} className="flex flex-wrap gap-3 mb-8 md:mb-12">
               {contact.socials.map(s => (
                 <a
                   key={s.href}
@@ -419,18 +419,18 @@ export default function Contact({ variant }: { variant?: Variant }) {
                   <span style={{ fontWeight: 500 }}>{s.label}</span>
                 </a>
               ))}
-            </motion.div>
+            </m.div>
 
-            <motion.p variants={staggerItem} style={{
+            <m.p variants={staggerItem} style={{
               fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(1.2rem, 1.8vw, 1.4rem)',
               fontStyle: 'italic', color: isLight ? 'rgba(44,62,80,0.55)' : 'rgba(216,180,160,0.5)', lineHeight: 1.55, maxWidth: 360,
             }}>
               {contact.closing}
-            </motion.p>
-          </motion.div>
+            </m.p>
+          </m.div>
 
           {/* Right: booking card */}
-          <motion.div
+          <m.div
             className="w-full lg:w-[480px] flex-shrink-0"
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -450,7 +450,7 @@ export default function Contact({ variant }: { variant?: Variant }) {
 
                 {/* ── Step 1: Calendar ── */}
                 {step === 'calendar' && (
-                  <motion.div key="calendar"
+                  <m.div key="calendar"
                     initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -483,7 +483,7 @@ export default function Contact({ variant }: { variant?: Variant }) {
                     }} variant={variant} />
 
                     {/* Next button */}
-                    <motion.div
+                    <m.div
                       animate={{ opacity: canProceed ? 1 : 0, y: canProceed ? 0 : 8 }}
                       transition={{ duration: 0.25 }}
                       style={{ marginTop: 24, pointerEvents: canProceed ? 'auto' : 'none' }}
@@ -503,13 +503,13 @@ export default function Contact({ variant }: { variant?: Variant }) {
                       >
                         Продолжить →
                       </button>
-                    </motion.div>
-                  </motion.div>
+                    </m.div>
+                  </m.div>
                 )}
 
                 {/* ── Step 2: Form ── */}
                 {step === 'form' && (
-                  <motion.div key="form"
+                  <m.div key="form"
                     initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -617,12 +617,12 @@ export default function Contact({ variant }: { variant?: Variant }) {
                         Откроется окно Calendly для выбора финального слота
                       </p>
                     </form>
-                  </motion.div>
+                  </m.div>
                 )}
 
                 {/* ── Success ── */}
                 {step === 'success' && (
-                  <motion.div key="success"
+                  <m.div key="success"
                     initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="flex flex-col items-center justify-center text-center"
@@ -650,12 +650,12 @@ export default function Contact({ variant }: { variant?: Variant }) {
                     }}>
                       Подтверждение придёт на вашу почту. До встречи!
                     </p>
-                  </motion.div>
+                  </m.div>
                 )}
 
               </AnimatePresence>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </div>

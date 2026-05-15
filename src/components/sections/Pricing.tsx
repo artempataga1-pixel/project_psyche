@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, type Variants } from 'framer-motion'
+import { m, type Variants } from 'framer-motion'
 import { viewportOnce } from '@/lib/animations'
 import { HolographicButton } from '@/components/ui/holographic-button'
 
@@ -109,7 +109,7 @@ export default function Pricing({ variant }: PricingProps) {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Заголовок */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -149,12 +149,12 @@ export default function Pricing({ variant }: PricingProps) {
           >
             {sectionText.subtitle}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Тарифы: мобиле 1 кол, sm 2 кол (первые 2 и 1 ниже), md 3 кол */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6 md:mb-8">
           {plans.map((plan, i) => (
-            <motion.div
+            <m.div
               key={plan.id}
               custom={i}
               variants={cardVariants}
@@ -314,12 +314,12 @@ export default function Pricing({ variant }: PricingProps) {
                   {sectionText.cta}
                 </HolographicButton>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* Что входит */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -356,7 +356,7 @@ export default function Pricing({ variant }: PricingProps) {
             <strong style={{ color: 'rgba(216,180,160,0.7)', fontWeight: 600 }}>Что входит в каждую сессию:&nbsp;</strong>
             {sectionText.includes}
           </p>
-        </motion.div>
+        </m.div>
 
       </div>
     </section>

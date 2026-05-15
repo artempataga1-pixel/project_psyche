@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 
 /* ── Corner marker (same as Problems / Formats) ── */
@@ -139,7 +139,7 @@ export default function Blog() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -166,10 +166,10 @@ export default function Blog() {
           >
             Из письменного стола
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* Cards */}
-        <motion.div
+        <m.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -177,7 +177,7 @@ export default function Blog() {
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5"
         >
           {articles.map((article) => (
-            <motion.article
+            <m.article
               key={article.id}
               variants={staggerItem}
               className="relative flex flex-col rounded-[20px] overflow-hidden group"
@@ -298,12 +298,12 @@ export default function Blog() {
                   >→</span>
                 </a>
               </div>
-            </motion.article>
+            </m.article>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -329,7 +329,7 @@ export default function Blog() {
             <span>Все заметки в Telegram-канале</span>
             <span className="group-hover:translate-x-1" style={{ transition: 'transform 0.2s', display: 'inline-block' }}>→</span>
           </a>
-        </motion.div>
+        </m.div>
 
       </div>
     </section>

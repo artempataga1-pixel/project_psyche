@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, type Variants } from 'framer-motion'
+import { m, type Variants } from 'framer-motion'
 import { viewportOnce } from '@/lib/animations'
 import { problems } from '@/content/problems'
 
@@ -89,7 +89,7 @@ const cardReveal: Variants = {
 function ProblemCard({ text, idx }: { text: string; idx: number }) {
   const Sketch = sketches[idx]
   return (
-    <motion.div
+    <m.div
       custom={idx}
       variants={cardReveal}
       initial="hidden"
@@ -151,7 +151,7 @@ function ProblemCard({ text, idx }: { text: string; idx: number }) {
           <Sketch />
         </div>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -161,7 +161,7 @@ export default function Problems() {
       <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Заголовок */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -198,7 +198,7 @@ export default function Problems() {
           >
             {problems.subtitle}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* 2×2 сетка: на мобиле 1 колонка, на md+ 2 колонки */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
@@ -208,7 +208,7 @@ export default function Problems() {
         </div>
 
         {/* Итоговая строка */}
-        <motion.p
+        <m.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={viewportOnce}
@@ -221,7 +221,7 @@ export default function Problems() {
           }}
         >
           Если что-то из этого отзывается — мы можем поговорить.
-        </motion.p>
+        </m.p>
 
       </div>
     </section>

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, type Variants } from 'framer-motion'
+import { m, type Variants } from 'framer-motion'
 import { viewportOnce } from '@/lib/animations'
 import { formats as content } from '@/content/formats'
 
@@ -88,7 +88,7 @@ export default function Formats() {
       <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Заголовок */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -122,14 +122,14 @@ export default function Formats() {
               {content.subtitle}
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* 3 равные карточки: мобиле 1 кол, sm 2 кол, md 3 кол */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
           {content.items.map((item, idx) => {
             const Sketch = sketches[idx]
             return (
-              <motion.div
+              <m.div
                 key={idx}
                 custom={idx}
                 variants={cardReveal}
@@ -210,7 +210,7 @@ export default function Formats() {
                     <Sketch />
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>

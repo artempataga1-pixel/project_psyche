@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Open_Sans, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import ScrollReset from '@/components/ScrollReset'
+import { LazyMotion, domAnimation } from 'framer-motion'
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -63,8 +64,10 @@ export default function RootLayout({
         <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       </head>
       <body className="antialiased">
-        <ScrollReset />
-        {children}
+        <LazyMotion features={domAnimation}>
+          <ScrollReset />
+          {children}
+        </LazyMotion>
       </body>
     </html>
   )

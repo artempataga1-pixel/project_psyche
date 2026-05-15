@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence, useInView, type Variants } from 'framer-motion'
+import { m, AnimatePresence, useInView, type Variants } from 'framer-motion'
 
 export interface CircularTestimonialItem {
   id: number
@@ -100,7 +100,7 @@ export function CircularTestimonials({
         </svg>
 
         {/* Вращающаяся дуга — анимация только когда секция видна */}
-        <motion.svg
+        <m.svg
           ref={arcRef}
           width="220" height="220" viewBox="0 0 220 220" fill="none"
           className="absolute inset-0"
@@ -119,10 +119,10 @@ export function CircularTestimonials({
           {/* Светящаяся точка на конце дуги */}
           <circle cx="205" cy="155" r="4" fill="rgba(216,180,160,0.8)" />
           <circle cx="205" cy="155" r="7" fill="rgba(216,180,160,0.15)" />
-        </motion.svg>
+        </m.svg>
 
         {/* Центральный круг с фото */}
-        <motion.div
+        <m.div
           key={active}
           initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -157,7 +157,7 @@ export function CircularTestimonials({
               </span>
             </div>
           )}
-        </motion.div>
+        </m.div>
 
         {/* Маленькие точки на окружности */}
         {[0, 60, 120, 180, 240, 300].map((deg, i) => (
@@ -184,7 +184,7 @@ export function CircularTestimonials({
       {/* ── Контент ── */}
       <div className="flex-1 min-w-0">
         <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
+          <m.div
             key={active}
             custom={direction}
             variants={variants}
@@ -262,7 +262,7 @@ export function CircularTestimonials({
                 {current.name}, {ageLabel(current.age)}
               </span>
             </div>
-          </motion.div>
+          </m.div>
         </AnimatePresence>
 
         {/* Навигация */}

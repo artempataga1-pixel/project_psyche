@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { viewportOnce } from '@/lib/animations'
 import { CircularTestimonials } from '@/components/ui/circular-testimonials'
 import testimonialsData from '@/data/testimonials.json'
@@ -14,7 +14,7 @@ export default function Testimonials() {
       <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Заголовок */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -41,10 +41,10 @@ export default function Testimonials() {
           >
             Истории трансформаций
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* CircularTestimonials в тёмном контейнере */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -59,7 +59,7 @@ export default function Testimonials() {
           <CircularTestimonials
             testimonials={items}
           />
-        </motion.div>
+        </m.div>
 
       </div>
     </section>

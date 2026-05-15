@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 import faqData from '@/data/faq.json'
 import type { FaqItem } from '@/types'
@@ -16,7 +16,7 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Заголовок */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -43,17 +43,17 @@ export default function FAQ() {
           >
             Часто спрашивают
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* Аккордеон — линейный, без карточек */}
-        <motion.div
+        <m.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={viewportOnce}
         >
           {items.map((item, idx) => (
-            <motion.div
+            <m.div
               key={item.id}
               variants={staggerItem}
               style={{
@@ -127,7 +127,7 @@ export default function FAQ() {
 
               <AnimatePresence initial={false}>
                 {open === item.id && (
-                  <motion.div
+                  <m.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -145,12 +145,12 @@ export default function FAQ() {
                     >
                       {item.answer}
                     </p>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
       </div>
     </section>

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { staggerContainer, staggerItem, viewportOnce } from '@/lib/animations'
 import { about } from '@/content/about'
 
@@ -11,7 +11,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Badge */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -23,12 +23,12 @@ export default function About() {
             style={{ color: '#D8B4A0', fontFamily: 'var(--font-inter)' }}>
             {about.badge}
           </span>
-        </motion.div>
+        </m.div>
 
         <div className="flex flex-col md:flex-row gap-14 md:gap-20 lg:gap-24 items-start">
 
           {/* Left column — photo slider */}
-          <motion.div
+          <m.div
             className="w-full sm:w-[300px] md:w-[360px] lg:w-[400px] flex-shrink-0 mx-auto md:mx-0"
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -56,7 +56,7 @@ export default function About() {
             </div>
 
             {/* Competency tags */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportOnce}
@@ -69,35 +69,35 @@ export default function About() {
                   {t.label}
                 </span>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Right column — text */}
-          <motion.div
+          <m.div
             className="flex-1 pt-0 md:pt-4"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={viewportOnce}
           >
-            <motion.h2 variants={staggerItem} className="font-bold mb-8 whitespace-pre-line" style={{
+            <m.h2 variants={staggerItem} className="font-bold mb-8 whitespace-pre-line" style={{
               fontFamily: 'var(--font-cormorant)',
               fontSize: 'clamp(2rem, 4.5vw, 3.8rem)',
               color: '#2C3E50', lineHeight: 1.08,
             }}>
               {about.title}
-            </motion.h2>
+            </m.h2>
 
             {about.bio.map((para, i) => (
-              <motion.p key={i} variants={staggerItem} className="mb-5" style={{
+              <m.p key={i} variants={staggerItem} className="mb-5" style={{
                 color: '#5D6F83', fontFamily: 'var(--font-open-sans)',
                 fontSize: '1.05rem', lineHeight: 1.85,
               }}>
                 {para}
-              </motion.p>
+              </m.p>
             ))}
 
-            <motion.blockquote variants={staggerItem} className="my-10 pl-7"
+            <m.blockquote variants={staggerItem} className="my-10 pl-7"
               style={{ borderLeft: '2px solid #D8B4A0' }}>
               <p style={{
                 fontFamily: 'var(--font-cormorant)',
@@ -106,9 +106,9 @@ export default function About() {
               }}>
                 «Я верю, что каждый человек несёт в себе ответы. Моя задача — помочь их услышать.»
               </p>
-            </motion.blockquote>
+            </m.blockquote>
 
-            <motion.div variants={staggerItem} className="rounded-2xl p-6 mt-2" style={{
+            <m.div variants={staggerItem} className="rounded-2xl p-6 mt-2" style={{
               background: 'rgba(216,180,160,0.07)',
               border: '1px solid rgba(216,180,160,0.18)',
             }}>
@@ -117,8 +117,8 @@ export default function About() {
               }}>
                 {about.credentials}
               </p>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { hero } from '@/content/hero'
 import { HolographicButton } from '@/components/ui/holographic-button'
@@ -87,7 +87,7 @@ export default function Hero({ variant }: HeroProps) {
       <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-[clamp(2rem,5vw,5rem)] pt-28 pb-20 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
 
         {/* ── Photo column (mobile: top, desktop: right) ── */}
-        <motion.div
+        <m.div
           className="relative flex-shrink-0 w-full lg:hidden"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -137,25 +137,25 @@ export default function Hero({ variant }: HeroProps) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* ── Text column ── */}
-        <motion.div
+        <m.div
           className="flex-1 max-w-2xl lg:max-w-none w-full"
           variants={staggerContainer}
           initial="initial"
           animate="animate"
         >
-          <motion.div variants={staggerItem} className="mb-7 sm:mb-10">
+          <m.div variants={staggerItem} className="mb-7 sm:mb-10">
             <span className="inline-flex items-center gap-2 sm:gap-3 text-xs font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em]"
               style={{ color: t.label, fontFamily: 'var(--font-inter)' }}>
               <span style={{ display: 'block', width: '20px', height: '1px', background: t.labelLine, flexShrink: 0 }} />
               {hero.badge}
               <span style={{ display: 'block', width: '20px', height: '1px', background: t.labelLine, flexShrink: 0 }} />
             </span>
-          </motion.div>
+          </m.div>
 
-          <motion.h1 variants={staggerItem} className="font-bold mb-6 sm:mb-8" style={{
+          <m.h1 variants={staggerItem} className="font-bold mb-6 sm:mb-8" style={{
             fontFamily: 'var(--font-cormorant)',
             fontSize: 'clamp(2.2rem, 5.5vw, 5.5rem)',
             color: t.title, lineHeight: 1.05,
@@ -166,17 +166,17 @@ export default function Hero({ variant }: HeroProps) {
             <em style={{ color: '#D8B4A0', fontStyle: 'italic', fontWeight: 700 }}>
               {hero.title.line2}
             </em>
-          </motion.h1>
+          </m.h1>
 
-          <motion.p variants={staggerItem} className="mb-8 sm:mb-12" style={{
+          <m.p variants={staggerItem} className="mb-8 sm:mb-12" style={{
             color: t.body, maxWidth: '420px',
             fontFamily: 'var(--font-open-sans)', lineHeight: 1.8,
             fontSize: 'clamp(0.9rem, 2.2vw, 1.125rem)',
           }}>
             {hero.subtitle}
-          </motion.p>
+          </m.p>
 
-          <motion.div variants={staggerItem} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-14">
+          <m.div variants={staggerItem} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-14">
             <HolographicButton href="#contact"
               className="inline-flex items-center justify-center font-semibold rounded-full"
               style={{
@@ -197,9 +197,9 @@ export default function Hero({ variant }: HeroProps) {
                 background: t.secondaryBtnBg, borderRadius: '9999px',
                 display: 'inline-flex', minHeight: '44px',
               }}>{hero.cta.secondary}</HolographicButton>
-          </motion.div>
+          </m.div>
 
-          <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-x-0 gap-y-2">
+          <m.div variants={staggerItem} className="flex flex-wrap items-center gap-x-0 gap-y-2">
             {hero.tags.map((tag, i) => (
               <span key={tag} className="flex items-center">
                 <span className="text-sm" style={{ color: t.tagText, fontFamily: 'var(--font-inter)', fontSize: 'clamp(0.75rem, 1.8vw, 0.875rem)' }}>
@@ -210,11 +210,11 @@ export default function Hero({ variant }: HeroProps) {
                 )}
               </span>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* ── Photo column (desktop: right) ── */}
-        <motion.div
+        <m.div
           className="relative flex-shrink-0 w-full lg:w-auto hidden lg:block"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -307,12 +307,12 @@ export default function Hero({ variant }: HeroProps) {
               <path d="M1 17 L1 1 L17 1" stroke="#D8B4A0" strokeWidth="1.5" fill="none" />
             </svg>
           ))}
-        </motion.div>
+        </m.div>
 
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -322,12 +322,12 @@ export default function Hero({ variant }: HeroProps) {
           style={{ color: t.scrollLabel, fontFamily: 'var(--font-inter)' }}>
           {hero.scroll}
         </span>
-        <motion.div
+        <m.div
           style={{ width: '1px', height: '44px', background: 'linear-gradient(to bottom, rgba(216,180,160,0.5), transparent)' }}
           animate={{ scaleY: [0.3, 1, 0.3], opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
         />
-      </motion.div>
+      </m.div>
     </section>
   )
 }

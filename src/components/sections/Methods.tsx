@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, type Variants } from 'framer-motion'
+import { m, type Variants } from 'framer-motion'
 import { viewportOnce } from '@/lib/animations'
 import { methods as content } from '@/content/methods'
 
@@ -124,7 +124,7 @@ function MethodCard({ item, idx, variant }: { item: typeof content.items[0]; idx
   const sketchColor = isLight ? (variant === 'light-a' ? '#4A6FA5' : '#D8B4A0') : '#D8B4A0'
 
   return (
-    <motion.div
+    <m.div
       custom={idx}
       variants={cardReveal}
       initial="hidden"
@@ -200,7 +200,7 @@ function MethodCard({ item, idx, variant }: { item: typeof content.items[0]; idx
           <Sketch />
         </div>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -229,7 +229,7 @@ export default function Methods({ variant }: MethodsProps) {
       <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-10">
 
         {/* Заголовок */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
@@ -271,7 +271,7 @@ export default function Methods({ variant }: MethodsProps) {
               {content.subtitle}
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* 2×2 сетка: на мобиле 1 колонка, на md+ 2 колонки */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
