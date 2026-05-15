@@ -159,12 +159,14 @@ export function HolographicButton({
         {children}
       </span>
 
-      {/* Голографический оверлей */}
+      {/* Голографический оверлей — видим только при hover */}
       <span aria-hidden style={{
         position: 'absolute', inset: 0,
         mixBlendMode: 'overlay', pointerEvents: 'none', zIndex: 3,
         overflow: 'hidden',
         borderRadius: 'inherit',
+        opacity: hovered ? 1 : 0,
+        transition: 'opacity 200ms ease',
       }}>
         {OVERLAY_COLORS.map((color, i) => (
           <span key={i} style={{
@@ -173,7 +175,6 @@ export function HolographicButton({
             transform: `rotate(${overlayPos + i * 10}deg)`,
             transformOrigin: 'center center',
             transition: !noInOut ? 'transform 200ms ease-out' : 'none',
-            willChange: 'transform',
             background: color,
             filter: 'blur(10px)',
             opacity: 0.7,

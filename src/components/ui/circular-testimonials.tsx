@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence, type Variants } from 'framer-motion'
+import { motion, AnimatePresence, useInView, type Variants } from 'framer-motion'
 
 export interface CircularTestimonialItem {
   id: number
@@ -56,6 +56,8 @@ export function CircularTestimonials({
 }: CircularTestimonialsProps) {
   const [active, setActive] = useState(0)
   const [direction, setDirection] = useState<1 | -1>(1)
+  const arcRef = useRef<SVGSVGElement>(null)
+  const isInView = useInView(arcRef, { margin: '0px' })
 
   const {
     arcStroke       = 'rgba(216,180,160,0.18)',
@@ -97,11 +99,12 @@ export function CircularTestimonials({
           <circle cx="110" cy="110" r="76" stroke={arcStroke} strokeWidth="0.75" />
         </svg>
 
-        {/* Вращающаяся дуга */}
+        {/* Вращающаяся дуга — анимация только когда секция видна */}
         <motion.svg
+          ref={arcRef}
           width="220" height="220" viewBox="0 0 220 220" fill="none"
           className="absolute inset-0"
-          animate={{ rotate: 360 }}
+          animate={isInView ? { rotate: 360 } : false}
           transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
           style={{ originX: '110px', originY: '110px' }}
         >
