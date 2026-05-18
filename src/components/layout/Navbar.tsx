@@ -8,7 +8,7 @@ function scrollTo(href: string) {
   const id = href.startsWith('#') ? href.slice(1) : href
   const el = document.getElementById(id)
   if (!el) return
-  window.scrollTo({ top: el.offsetTop + 120, behavior: 'smooth' })
+  window.scrollTo({ top: el.offsetTop + 60, behavior: 'smooth' })
 }
 
 export default function Navbar() {
