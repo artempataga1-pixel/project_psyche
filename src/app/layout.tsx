@@ -25,14 +25,17 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://psyche-and-pen.ru'),
+  metadataBase: new URL('https://martherapy.ru'),
   title: 'Юлия — психолог, арт-терапевт | мАртерапия',
   description: 'Интегративная терапия для чувствительных и творческих людей. КПТ, арт-терапия, работа с тревогой, творческими блоками, жизненными кризисами. Онлайн и очно.',
   keywords: 'психолог, арт-терапевт, КПТ, арт-терапия, тревога, онлайн терапия',
+  alternates: {
+    canonical: 'https://martherapy.ru',
+  },
   openGraph: {
     title: 'Юлия — психолог, арт-терапевт',
     description: 'Глубинная терапия для чувствительных и творческих натур',
-    url: 'https://psyche-and-pen.ru',
+    url: 'https://martherapy.ru',
     siteName: 'мАртерапия',
     locale: 'ru_RU',
     type: 'website',

@@ -72,6 +72,7 @@ export function HolographicButton({
   const [hovered, setHovered] = useState(false)
   const lastM = useRef(IDENTITY)
   const tReady = useRef(false)
+  const cachedRect = useRef({ l: 0, r: 0, t: 0, b: 0 })
   const timers = useRef<ReturnType<typeof setTimeout>[]>([])
   const rafRef = useRef<number | null>(null)
   const clear = () => timers.current.forEach(clearTimeout)
@@ -81,7 +82,8 @@ export function HolographicButton({
   const onEnter = useCallback((e: MouseEvent) => {
     clear()
     setHovered(true)
-    const { l, r, t, b } = getRect(ref.current)
+    cachedRect.current = getRect(ref.current)
+    const { l, r, t, b } = cachedRect.current
     const xc = (l + r) / 2, yc = (t + b) / 2
     setNoInOut(false)
     timers.current.push(setTimeout(() => setNoInOut(true), 350))
@@ -101,7 +103,7 @@ export function HolographicButton({
     if (rafRef.current !== null) return
     rafRef.current = requestAnimationFrame(() => {
       rafRef.current = null
-      const { l, r, t, b } = getRect(ref.current)
+      const { l, r, t, b } = cachedRect.current
       const xc = (l + r) / 2, yc = (t + b) / 2
       setOverlayPos((Math.abs(xc - clientX) + Math.abs(yc - clientY)) / 1.5)
       if (tReady.current) go(buildMatrix(clientX, clientY, l, r, t, b))

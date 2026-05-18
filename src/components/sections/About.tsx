@@ -104,7 +104,7 @@ export default function About() {
                 fontSize: 'clamp(1.3rem, 2vw, 1.55rem)',
                 fontStyle: 'italic', color: '#4A6FA5', lineHeight: 1.55,
               }}>
-                «Я верю, что каждый человек несёт в себе ответы. Моя задача — помочь их услышать.»
+                «{about.quote}»
               </p>
             </m.blockquote>
 

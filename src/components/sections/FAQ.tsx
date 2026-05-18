@@ -64,6 +64,8 @@ export default function FAQ() {
               <button
                 className="w-full flex items-start justify-between text-left py-5 md:py-7 gap-4 md:gap-6 group"
                 onClick={() => setOpen(open === item.id ? null : item.id)}
+                aria-expanded={open === item.id}
+                aria-controls={`faq-answer-${item.id}`}
                 style={{ minHeight: '44px' }}
               >
                 {/* Номер */}
@@ -128,6 +130,7 @@ export default function FAQ() {
               <AnimatePresence initial={false}>
                 {open === item.id && (
                   <m.div
+                    id={`faq-answer-${item.id}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}

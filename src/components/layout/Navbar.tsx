@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { nav } from '@/content/nav'
 import { HolographicButton } from '@/components/ui/holographic-button'
 
@@ -8,7 +8,7 @@ function scrollTo(href: string) {
   const id = href.startsWith('#') ? href.slice(1) : href
   const el = document.getElementById(id)
   if (!el) return
-  window.scrollTo({ top: el.offsetTop + 60, behavior: 'smooth' })
+  window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })
 }
 
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const limelight = limelightRef.current
     if (!limelight) return
 

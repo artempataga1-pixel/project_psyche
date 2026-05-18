@@ -3,6 +3,7 @@
 import { m, type Variants } from 'framer-motion'
 import { viewportOnce } from '@/lib/animations'
 import { HolographicButton } from '@/components/ui/holographic-button'
+import { pricingSection } from '@/content/pricing'
 
 const cardVariants: Variants = {
   hidden: {
@@ -26,14 +27,7 @@ import type { PricingPlan } from '@/types'
 
 const plans = pricingData as PricingPlan[]
 
-const sectionText = {
-  title: 'Инвестиция в себя',
-  subtitle:
-    'Работа с глубинной психологией и творчеством — это наполнение внутреннего источника, из которого черпается энергия для всей жизни.',
-  includes:
-    'Моё 100% присутствие, безопасное конфиденциальное пространство, подбор техник, творческие материалы для сессии, поддержка в мессенджере между встречами.',
-  cta: 'Записаться',
-}
+const sectionText = pricingSection
 
 type Variant = 'light-a' | 'light-b'
 

@@ -10,6 +10,7 @@ import Testimonials from '@/components/sections/Testimonials'
 import FAQ          from '@/components/sections/FAQ'
 import Blog         from '@/components/sections/Blog'
 import Contact      from '@/components/sections/Contact'
+import ScrollToTop  from '@/components/ScrollToTop'
 
 function Fade({ from, to }: { from: string; to: string }) {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
         <Contact variant="light-b" />
       </main>
       <Footer variant="light-b" />
+      <ScrollToTop />
     </>
   )
 }
